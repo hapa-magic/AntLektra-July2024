@@ -17,7 +17,7 @@ MonoBehaviour:
   timeActive: 10
   antNum: 4
   effect: 01000000
-  ant: {fileID: 0}
+  ant: {fileID: 5213699103791978811, guid: 380604b4e25860d4fa640f3d7a6e171a, type: 3}
   cardFace: {fileID: 0}
   minHealth: 5
   maxHealth: 10

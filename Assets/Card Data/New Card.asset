@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83e30edb449510c4a9d42dcf9283ed60, type: 3}
-  m_Name: SoldierAnt
+  m_Name: New Card
   m_EditorClassIdentifier: 
-  cardName: Soldiers
-  eggCost: 15
-  timeActive: 10
-  antNum: 4
-  effect: 00000000
+  cardName: 
+  eggCost: 0
+  timeActive: 0
+  antNum: 0
+  effect: 
   ant: {fileID: 0}
   cardFace: {fileID: 0}
-  minHealth: 10
-  maxHealth: 20
-  minAttack: 5
-  maxAttack: 10
+  minHealth: 0
+  maxHealth: 0
+  minAttack: 0
+  maxAttack: 0
