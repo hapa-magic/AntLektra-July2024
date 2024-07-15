@@ -1,0 +1,11 @@
+Name,Description,EffectType
+Draw,Player draws _ card(s).,Instant
+Discard,Player discards _ cards(s).,Instant
+Increase eggs/min,Queen generates _ more eggs per minute.,Power
+Cycle,Player discards _ card(s) to draw _ card(s).,Instant
+Consume,Queen eats a card to gain _ % of its cost in eggs.,Instant
+Shell Wall,Queen gains _ temporary shield.,Instant
+Twins,"While active, increase ant production by _ %.",Active
+Tame Luck,"While active, your Luck improves by _.",Active
+Honey Makers,"While active, increase egg production by _ %.",Active
+Hot Steps,"While active, produced ants increase speed by _ %.",Active

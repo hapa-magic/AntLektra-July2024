@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e30edb449510c4a9d42dcf9283ed60, type: 3}
+  m_Name: BasicAnt
+  m_EditorClassIdentifier: 
+  cardName: Basic Ant
+  eggCost: 10
+  timeActive: 10
+  antNum: 4
+  effect: 01000000
+  ant: {fileID: 0}
+  cardFace: {fileID: 0}
+  minHealth: 5
+  maxHealth: 10
+  minAttack: 5
+  maxAttack: 10
