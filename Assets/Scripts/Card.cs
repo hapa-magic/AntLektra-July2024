@@ -6,6 +6,20 @@ using UnityEngine;
 using static Database;
 
 namespace HapaMagic {
+    public struct Effect {
+            public string effectName;
+            public string description;
+            public string effectType;
+            public Effect(string effectName, string description, string effectType) {
+                this.effectName = effectName;
+                this.description = description;
+                this.effectType = effectType;
+            }
+            public void SetActive() {
+
+            }
+        };
+        
     [CreateAssetMenu(fileName = "New Card", menuName = "Card")] 
     public class Card : ScriptableObject {
         public string cardName;
@@ -19,6 +33,7 @@ namespace HapaMagic {
         public int maxHealth;
         public int minAttack;        
         public int maxAttack;
+        
         public enum DeckType{
             Base,
             Beetle,

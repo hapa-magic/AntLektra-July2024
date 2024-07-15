@@ -10,19 +10,6 @@ using HapaMagic;
 public class Database : MonoBehaviour {
     public string effectsFile = "AntLektraCardEffects.csv";
     public static Database Instance { get; private set; }
-    public struct Effect {
-        public string effectName;
-        public string description;
-        public string effectType;
-        public Effect(string effectName, string description, string effectType) {
-            this.effectName = effectName;
-            this.description = description;
-            this.effectType = effectType;
-        }
-        public void SetActive() {
-
-        }
-    };
     public List<Effect> effects = new List<Effect>();
 
     void Awake() {
