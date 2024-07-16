@@ -37,7 +37,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     void Awake()
     {
         cardPreviewParent = GameObject.Find("CardPreview");
-        Debug.Log(cardPreviewParent);
         cardPreview = cardPreviewParent.GetComponent<CardPreview>();
         UILayer = LayerMask.NameToLayer("UI");
         rectTransform = GetComponent<RectTransform>();
@@ -77,11 +76,11 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                 HandleDragState();
                 if (IsPointerOverUIElement()) {
                     if (!Input.GetMouseButton(0)) {
-                        CheckForPlay();
-                        cardPreview.DestroyPreview();
+                        if (CheckForPlay() == false) {
+                            TransitionToState0();
+                        }
                     }
-                }
-                if (!Input.GetMouseButton(0)) //Check if mouse button is released
+                } else if (!Input.GetMouseButton(0)) //Check if mouse button is released
                 {
                     TransitionToState0();
                 }
@@ -93,8 +92,8 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                     TransitionToState0();
                 }
                 break;*/
-            case 4:
-                HandleAlmostPlayState();  
+            case 5:
+
                 break;  
         }
     }
@@ -192,9 +191,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                 if (curRaysastResult.gameObject.GetComponent<PlaySpot>() != null)
                 {
                     playTarget = curRaysastResult.gameObject;
-                    rectTransform.localPosition = playTarget.GetComponent<RectTransform>().localPosition + movementOffset;
-                    //ChangeParent();
-                    return true;
+                    return PlayCard(playTarget.transform);
                 }
             }
         }
@@ -207,6 +204,13 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         List<RaycastResult> raysastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, raysastResults);
         return raysastResults;
+    }
+
+    private bool PlayCard(Transform newParent) {
+        currentState = 5;
+        transform.SetParent(newParent, false);
+        rectTransform.position = newParent.GetComponentInParent<RectTransform>().position;
+        return true;
     }
 
     private void HandleAlmostPlayState() {
