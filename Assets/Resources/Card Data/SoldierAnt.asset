@@ -7,7 +7,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83e30edb449510c4a9d42dcf9283ed60, type: 3}
   m_Name: SoldierAnt
@@ -15,11 +15,15 @@ MonoBehaviour:
   cardName: Soldiers
   eggCost: 15
   timeActive: 10
-  antNum: 4
-  effect: 00000000
-  ant: {fileID: 0}
+  minAnts: 4
+  maxAnts: 8
+  numAnts: 4
+  effect:
+  - {fileID: 11400000, guid: 94fbb3e74f6ac2945bb7d1771b010830, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  ant: {fileID: 5213699103791978811, guid: 380604b4e25860d4fa640f3d7a6e171a, type: 3}
   cardFace: {fileID: 0}
-  minHealth: 10
-  maxHealth: 20
-  minAttack: 5
-  maxAttack: 10
+  deckType: 0
+  health: 15
+  attack: 15

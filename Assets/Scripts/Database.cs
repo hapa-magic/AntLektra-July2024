@@ -25,7 +25,7 @@ public class Database : MonoBehaviour {
             while ((s = sr.ReadLine()) != null)
             {
                 string[] words = s.Split(',');
-                effects.Add(new Effect(words[0], words[1], words[2]));
+                //effects.Add(new Effect(words[0], words[1], words[2]));
             }
         }
 

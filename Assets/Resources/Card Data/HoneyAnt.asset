@@ -7,19 +7,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83e30edb449510c4a9d42dcf9283ed60, type: 3}
-  m_Name: BasicAnt
+  m_Name: HoneyAnt
   m_EditorClassIdentifier: 
-  cardName: Basic Ant
-  eggCost: 10
+  cardName: Honey Ants
+  eggCost: 20
   timeActive: 10
-  antNum: 4
-  effect: 01000000
+  minAnts: 3
+  maxAnts: 6
+  numAnts: 5
+  effect:
+  - {fileID: 11400000, guid: 827ef8f90185bca40b14dd50183263f5, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   ant: {fileID: 5213699103791978811, guid: 380604b4e25860d4fa640f3d7a6e171a, type: 3}
   cardFace: {fileID: 0}
-  minHealth: 5
-  maxHealth: 10
-  minAttack: 5
-  maxAttack: 10
+  deckType: 0
+  health: 2
+  attack: 0

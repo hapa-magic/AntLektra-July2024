@@ -6,60 +6,31 @@ using UnityEngine;
 using static Database;
 
 namespace HapaMagic {
-    public struct Effect {
-            public string effectName;
-            public string description;
-            public string effectType;
-            public Effect(string effectName, string description, string effectType) {
-                this.effectName = effectName;
-                this.description = description;
-                this.effectType = effectType;
-            }
-            public void SetActive() {
-
-            }
-        };
         
     [CreateAssetMenu(fileName = "New Card", menuName = "Card")] 
     public class Card : ScriptableObject {
         public string cardName;
         public int eggCost;
         public float timeActive;
-        public int antNum;
-        public List<Effect> effect;
+        public int minAnts;
+        public int maxAnts;
+        public int numAnts;
+        public List<Effect> effect = new List<Effect>(3);
         public GameObject ant;
         public SpriteRenderer cardFace;
-        public int minHealth;
-        public int maxHealth;
-        public int minAttack;        
-        public int maxAttack;
-        
-        public enum DeckType{
+        public DeckType deckType;
+        public int health;
+        public int attack;
+        private void Awake()
+        {
+            cardFace = ant.GetComponent<SpriteRenderer>();
+            SetNumAnts(new System.Random());
+        }
+        public enum DeckType
+        {
             Base,
             Beetle,
             Mantis,
-        }
-
-        public enum EffectType {
-            Instant,
-            Active,
-            Power
-        }
-
-        public enum Effect{
-            None,
-            SpawnBasicAnt,
-            SpawnHoneyAnt,
-            SpawnBeetleAnt,
-            SpawnMantisAnt,
-            Cycle,
-            Draw,
-            Discard,
-        }
-
-        public struct CardEffect{
-            public EffectType type;
-            public Effect effect;
         }
 
 
@@ -100,17 +71,15 @@ namespace HapaMagic {
             percent *= timeActive;
             timeActive = (int)Math.Round(percent);
         }
-        public void SetAntNum(int antNum) {
-            this.antNum = antNum;
-        }
-        public void ChangeAntNum(int antNum) {
-            this.antNum += antNum;
-        }
         public void SetAnt(GameObject ant) {
             this.ant = ant;
         }
         public void SetCardFace(SpriteRenderer cardFace) {
             this.cardFace = cardFace;
+        }
+        public void SetNumAnts(System.Random rnd)
+        {
+            numAnts = rnd.Next(minAnts, maxAnts + 1);
         }
     }
 }

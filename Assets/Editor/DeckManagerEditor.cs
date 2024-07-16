@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HapaMagic;
 
 #if UNITY_EDITOR
-using UnityEditor;
+using UnityEditor; 
 [CustomEditor(typeof(DeckManager))]
 public class DeckManagerEditor : Editor
 {
