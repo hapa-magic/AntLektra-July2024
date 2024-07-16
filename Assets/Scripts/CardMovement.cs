@@ -15,6 +15,8 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private Vector3 originalPosition;
     int UILayer;
     private GameObject playTarget;
+    [SerializeField] public Canvas cardPreviewParent;
+    private CardPreview cardPreview;
     
     [SerializeField] private Vector3 movementOffset = new Vector3 (-300, 280, 0);
     [SerializeField] private float selectScale = 1.1f;
@@ -73,6 +75,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                 if (IsPointerOverUIElement()) {
                     if (!Input.GetMouseButton(0)) {
                         CheckForPlay();
+                        cardPreview.DestroyPreview();
                     }
                 }
                 if (!Input.GetMouseButton(0)) //Check if mouse button is released
@@ -133,6 +136,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     {
         if (currentState == 1)
         {
+            cardPreview.PreviewCard(rectTransform.gameObject);
             currentState = 2;
         }
     }
