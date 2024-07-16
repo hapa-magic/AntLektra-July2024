@@ -231,14 +231,14 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &6057752640081918705
 MonoBehaviour:
@@ -937,14 +937,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 4998493513272044714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0598e0c6d7fe07d4d9b3bf0e180bd6b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f9befed7b778284bbbb8eb4e221cf23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementOffset: {x: -300, y: 280, z: 0}
   selectScale: 1.1
   cardPlay: {x: 0, y: 400}
-  playPosition: {x: -600, y: 500}
+  playPosition: {x: -600, y: 500, z: 0}
   glowEffect: {fileID: 7402038315342995450}
   playArrow: {fileID: 2468367396792084242}
+  lerpFactor: 0.1
+  cardPlayDivider: 4
+  cardPlayMultiplier: 1
+  needUpdateCardPlayPosition: 0
+  playPositionYDivider: 2
+  playPositionYMultiplier: 1
+  playPositionXDivider: 4
+  playPositionXMultiplier: 1
+  needUpdatePlayPosition: 0
 --- !u!61 &2642091825112051814
 BoxCollider2D:
   m_ObjectHideFlags: 0
