@@ -5,19 +5,25 @@ using HapaMagic;
 
 public class CardPreview : MonoBehaviour
 {
-    Canvas canvas;
-    GameObject previewCard;
+    Transform parent;
+    public float previewScaler;
     // Start is called before the first frame update
     void Start()
     {
-        canvas = GetComponentInParent<Canvas>();
+        parent = this.transform;
     }
 
     public void PreviewCard(GameObject card) {
-        previewCard = Instantiate(card, canvas.gameObject.transform.position, Quaternion.identity, canvas.transform);
-        previewCard.transform.localScale *= 5;
+        GameObject previewCard = Instantiate(card, parent.position, 
+                                             Quaternion.identity, parent);
+
+        previewCard.name = "Preview Card";
+        previewCard.GetComponent<CardMovement>().enabled = false;
+        previewCard.GetComponentInChildren<Canvas>().sortingOrder = 1;
+        previewCard.transform.localScale *= previewScaler;
     }
     public void DestroyPreview(){
-        Destroy(previewCard);
+        GameObject gameObject = parent.Find("Preview Card").gameObject;
+        Destroy(gameObject);
     }
 }

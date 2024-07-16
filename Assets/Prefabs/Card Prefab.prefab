@@ -238,7 +238,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &6057752640081918705
 MonoBehaviour:
@@ -940,6 +940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9befed7b778284bbbb8eb4e221cf23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPreviewParent: {fileID: 0}
   movementOffset: {x: -300, y: 280, z: 0}
   selectScale: 1.1
   cardPlay: {x: 0, y: 400}
@@ -954,7 +955,7 @@ MonoBehaviour:
   playPositionYMultiplier: 1
   playPositionXDivider: 4
   playPositionXMultiplier: 1
-  needUpdatePlayPosition: 0
+  needUpdatePlayPosition: 1
 --- !u!61 &2642091825112051814
 BoxCollider2D:
   m_ObjectHideFlags: 0

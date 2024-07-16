@@ -15,7 +15,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private Vector3 originalPosition;
     int UILayer;
     private GameObject playTarget;
-    [SerializeField] public Canvas cardPreviewParent;
+    [SerializeField] public GameObject cardPreviewParent;
     private CardPreview cardPreview;
     
     [SerializeField] private Vector3 movementOffset = new Vector3 (-300, 280, 0);
@@ -36,6 +36,9 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     void Awake()
     {
+        cardPreviewParent = GameObject.Find("CardPreview");
+        Debug.Log(cardPreviewParent);
+        cardPreview = cardPreviewParent.GetComponent<CardPreview>();
         UILayer = LayerMask.NameToLayer("UI");
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
@@ -98,6 +101,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     private void TransitionToState0()
     {
+        cardPreview.DestroyPreview();
         currentState = 0;
         rectTransform.localScale = originalScale; //Reset Scale
         rectTransform.localRotation = originalRotation; //Reset Rotation
@@ -113,6 +117,8 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             originalPosition = rectTransform.localPosition;
             originalRotation = rectTransform.localRotation;
             originalScale = rectTransform.localScale;
+
+            cardPreview.PreviewCard(rectTransform.gameObject);
 
             currentState = 1;
         } 
@@ -136,7 +142,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     {
         if (currentState == 1)
         {
-            cardPreview.PreviewCard(rectTransform.gameObject);
             currentState = 2;
         }
     }
