@@ -52,5 +52,31 @@ public class CardDisplay : MonoBehaviour
             effect2.text = cardData.effect[2].description;
         }
     }
+    public void UpdateCardDisplay(int newNumAnts) {
+        nameText.text = cardData.cardName;
+        if (cardData.health != 0)
+        {
+            statsNum.text = cardData.attack.ToString() + '/' + cardData.health.ToString();
+        }
+        costText.text = cardData.eggCost.ToString();
+        cardData.SetNumAnts(newNumAnts);
+        if (newNumAnts > 0)
+        {
+            numAnts.text = newNumAnts.ToString();
+        } else
+        {
+            AntCountImage.color = Color.clear;
+            numAnts.text = "";
+        }
+        effect1.text = cardData.effect[0].description;
+        if (cardData.effect[1].effectAbility != Effect.EffectAbility.None)
+        {
+            effect2.text = cardData.effect[1].description;
+        }
+        if (cardData.effect[2].effectAbility != Effect.EffectAbility.None)
+        {
+            effect2.text = cardData.effect[2].description;
+        }
+    }
 }
 

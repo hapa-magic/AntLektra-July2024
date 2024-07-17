@@ -81,5 +81,8 @@ namespace HapaMagic {
         {
             numAnts = rnd.Next(minAnts, maxAnts + 1);
         }
+        public void SetNumAnts(int numAnts) {
+            this.numAnts = numAnts;
+        }
     }
 }

@@ -1889,10 +1889,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _antPrefab: {fileID: 5213699103791978811, guid: 380604b4e25860d4fa640f3d7a6e171a, type: 3}
-  _beetleAntPrefab: {fileID: 0}
-  _mantisAntPrefab: {fileID: 0}
+  _honeyAntPrefab: {fileID: 0}
+  _beetleAntPrefab: {fileID: 4928355592266149471, guid: 01b04e5995c68e4459580769800eba7a, type: 3}
+  _mantisAntPrefab: {fileID: 6452456339262450656, guid: 8e7bfc2d7e497814987330ba4714f52a, type: 3}
   _robotAntPrefab: {fileID: 0}
   spawnParent: {fileID: 1950835712}
+  spawnWaitTime: 1
 --- !u!114 &699722355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2567,6 +2569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2670ab2c34eaf1e4a9877c7456f030cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnObject: {fileID: 699722351}
 --- !u!114 &1139589007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3216,6 +3219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2670ab2c34eaf1e4a9877c7456f030cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnObject: {fileID: 699722351}
 --- !u!114 &1353226879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3916,6 +3920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2670ab2c34eaf1e4a9877c7456f030cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnObject: {fileID: 699722351}
 --- !u!114 &1723065819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5181,6 +5186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2670ab2c34eaf1e4a9877c7456f030cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnObject: {fileID: 699722351}
 --- !u!114 &2030024925
 MonoBehaviour:
   m_ObjectHideFlags: 0

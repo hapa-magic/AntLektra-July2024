@@ -7,23 +7,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83e30edb449510c4a9d42dcf9283ed60, type: 3}
-  m_Name: MantisAnt
+  m_Name: BeetleAnt
   m_EditorClassIdentifier: 
-  cardName: Mantis Ants
+  cardName: Beetle Ants
   eggCost: 20
   timeActive: 10
-  minAnts: 3
-  maxAnts: 6
-  numAnts: 5
+  minAnts: 4
+  maxAnts: 8
+  numAnts: 7
   effect:
-  - {fileID: 11400000, guid: 065675531ef4a78438b36344ab6bc0bd, type: 2}
+  - {fileID: 11400000, guid: c1c6000cd42c7194199cbc9fe857846e, type: 2}
   - {fileID: 11400000, guid: 6439013500eef6b4598c0f7f1f686a66, type: 2}
   - {fileID: 11400000, guid: 6439013500eef6b4598c0f7f1f686a66, type: 2}
-  ant: {fileID: 6452456339262450656, guid: 8e7bfc2d7e497814987330ba4714f52a, type: 3}
+  ant: {fileID: 4928355592266149471, guid: 01b04e5995c68e4459580769800eba7a, type: 3}
   cardFace: {fileID: 0}
-  deckType: 2
-  health: 10
-  attack: 25
+  deckType: 1
+  health: 20
+  attack: 10

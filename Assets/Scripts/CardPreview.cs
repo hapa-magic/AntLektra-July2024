@@ -21,9 +21,14 @@ public class CardPreview : MonoBehaviour
         previewCard.GetComponent<CardMovement>().enabled = false;
         previewCard.GetComponentInChildren<Canvas>().sortingOrder = 1;
         previewCard.transform.localScale *= previewScaler;
+        StartCoroutine(UpdateDisplayAfterDelay(previewCard, card.GetComponent<CardDisplay>().cardData.numAnts));
     }
     public void DestroyPreview(){
         GameObject gameObject = parent.Find("Preview Card").gameObject;
         Destroy(gameObject);
+    }
+    private IEnumerator UpdateDisplayAfterDelay(GameObject card, int numAnts) {
+        yield return new WaitForSeconds(.2f);
+        card.GetComponent<CardDisplay>().UpdateCardDisplay(numAnts);
     }
 }

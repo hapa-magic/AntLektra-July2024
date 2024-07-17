@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class HomeNest : MonoBehaviour
 {
-    [SerializeField] GameObject _antPrefab;
-    [SerializeField] GameObject _beetleAntPrefab;
-    [SerializeField] GameObject _mantisAntPrefab;
-    [SerializeField] GameObject _robotAntPrefab;
+    [SerializeField] public GameObject _antPrefab;
+    [SerializeField] public GameObject _honeyAntPrefab;
+    [SerializeField] public GameObject _beetleAntPrefab;
+    [SerializeField] public GameObject _mantisAntPrefab;
+    [SerializeField] public GameObject _robotAntPrefab;
     [SerializeField] GameObject spawnParent;
+    public float spawnWaitTime;
     GameObject pheremoneStart;
     GridCell thisCell;
 
@@ -26,9 +28,12 @@ public class HomeNest : MonoBehaviour
     {
         // if ()
     }
-    public void SpawnAnt(GameObject ant) {
-        GameObject newAnt = Instantiate(ant, transform.position, Quaternion.identity, spawnParent.transform);
-        AntController antControl = newAnt.GetComponent<AntController>();
-        antControl.targetObj = pheremoneStart;
+    public IEnumerator SpawnAnt(GameObject ant, int power) {
+        for (int i = 0; i < power; ++i) {
+            GameObject newAnt = Instantiate(ant, transform.position, Quaternion.identity, spawnParent.transform);
+            AntController antControl = newAnt.GetComponent<AntController>();
+            antControl.targetObj = pheremoneStart;
+            yield return new WaitForSeconds(spawnWaitTime);
+        }
     }
 }

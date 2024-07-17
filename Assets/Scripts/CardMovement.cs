@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using HapaMagic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -120,7 +121,9 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             cardPreview.PreviewCard(rectTransform.gameObject);
 
             currentState = 1;
-        } 
+        } /* else if (currentState == 5) {
+            cardPreview.PreviewCard(rectTransform.gameObject);
+        }*/
     }
     public void OnPointerUp(PointerEventData eventData) {
         if (currentState == 2) {
@@ -134,7 +137,9 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         if (currentState == 1)
         {
             TransitionToState0();
-        }
+        } /* else if (currentState == 5) {
+           cardPreview.DestroyPreview();         
+        }*/
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -210,7 +215,9 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         currentState = 5;
         transform.SetParent(newParent, false);
         rectTransform.position = newParent.GetComponentInParent<RectTransform>().position;
-        return true;
+        Card card = GetComponent<CardDisplay>().cardData;
+        cardPreview.DestroyPreview();
+        return newParent.GetComponent<PlaySpot>().ActivateAbility(card.effect[0], card.numAnts);
     }
 
     private void HandleAlmostPlayState() {
