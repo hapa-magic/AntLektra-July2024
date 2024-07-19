@@ -598,7 +598,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 834985638}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DeckManager, Assembly-CSharp
         m_MethodName: PayToDraw
         m_Mode: 1
@@ -752,6 +752,51 @@ MonoBehaviour:
   - {fileID: 130865}
   - {fileID: 1870762827}
   objectInCell: {fileID: 0}
+--- !u!1 &123222450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 123222452}
+  - component: {fileID: 123222451}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &123222451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123222450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd4dc6d853e82b4a9b1ed4f6bba92aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayingCard: 0
+--- !u!4 &123222452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123222450}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1150.5338, y: 436.11832, z: -6.734099}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &125802379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,8 +1073,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -313.28427, y: -120.40782}
-  m_SizeDelta: {x: -626.5687, y: -240.8157}
+  m_AnchoredPosition: {x: 322.3602, y: -122.47368}
+  m_SizeDelta: {x: -644.7292, y: -244.9431}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &292115009
 MonoBehaviour:
@@ -2281,61 +2326,6 @@ MonoBehaviour:
   - {fileID: 27288425}
   - {fileID: 725453695}
   objectInCell: {fileID: 0}
---- !u!1 &834985636
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 834985637}
-  - component: {fileID: 834985638}
-  m_Layer: 5
-  m_Name: DeckManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &834985637
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 834985636}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1080914167}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &834985638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 834985636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8192e516dad935a42b6544cc68b65a8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allCards: []
-  startingHandSize: 6
-  maxHandSize: 5
-  eggTracker: {fileID: 634212975}
-  eggCost: 0
-  currentHandSize: 0
-  drawCostText: {fileID: 1274395023}
 --- !u!1 &1060310188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2507,7 +2497,6 @@ RectTransform:
   m_Children:
   - {fileID: 702105597}
   - {fileID: 1806395173}
-  - {fileID: 834985637}
   - {fileID: 33654722}
   - {fileID: 634212974}
   - {fileID: 1724965885}
@@ -5344,3 +5333,4 @@ SceneRoots:
   - {fileID: 572420413}
   - {fileID: 1399000832}
   - {fileID: 1080914167}
+  - {fileID: 123222452}
