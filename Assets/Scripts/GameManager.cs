@@ -1,5 +1,8 @@
+using HapaMagic;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,10 +12,16 @@ public class GameManager : MonoBehaviour
     private int playerHealth = 20;
     private int playerEggs;
     private int difficulty = 5;
+    public int eggCost;
+    public int eggDecayValue = 5;
+    public int eggIncrementValue = 5;
+    public int eggDecayTime;
+    public TMP_Text eggText;
 
     public OptionsManager OptionsManager { get; private set; }
     public AudioManager AudioManager { get; private set; }
     public DeckManager DeckManager { get; private set; }
+    public HandManager handManager { get; private set; }
 
     public bool PlayingCard = false;
 
@@ -29,6 +38,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Start()
+    {
+        StartCoroutine(DecayEggCost());
     }
 
     private void InitializeManagers()
@@ -94,5 +108,42 @@ public class GameManager : MonoBehaviour
     {
         get { return difficulty; }
         set { difficulty = value; }
+    }
+    public IEnumerator DecayEggCost()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(eggDecayTime);
+            if (eggCost > 10)
+            {
+                eggCost -= eggDecayValue;
+                UpdateEggCostNum();
+            }
+        }
+    }
+
+    private void IncreaseEggCost()
+    {
+        eggCost += eggIncrementValue;
+        UpdateEggCostNum();
+    }
+
+    public void UpdateEggCostNum()
+    {
+        eggText.text = eggCost.ToString();
+    }
+
+    public bool PayToDraw()
+    {
+        if (eggCost > playerEggs && DeckManager.DrawCard())
+        {
+            playerEggs -= eggCost;
+            IncreaseEggCost();
+            return true;
+        } else
+        {
+            Debug.Log("Can't afford it!!");
+            return false;
+        }
     }
 }

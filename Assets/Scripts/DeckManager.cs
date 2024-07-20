@@ -12,12 +12,9 @@ public class DeckManager : MonoBehaviour
 
     private int currentIndex = 0;
     public int maxHandSize = 5;
-    public EggTracker eggTracker;
-    public int eggCost;
     public int currentHandSize;
     private HandManager handManager;
     public TMP_Text drawCostText;
-
 
     void Start()
     {
@@ -34,9 +31,6 @@ public class DeckManager : MonoBehaviour
             Debug.Log($"Drawing Card");
             DrawCard(handManager);
         }
-        eggCost = 10;
-        UpdateEggCostNum();
-        StartCoroutine(DecayEggCost());
     }
 
     void Update()
@@ -46,42 +40,31 @@ public class DeckManager : MonoBehaviour
             currentHandSize = handManager.cardsInHand.Count;
         }
     }
-    public void PayToDraw()
-    {
-        if (eggTracker.eggNum > eggCost)
-        {
-            DrawCard(handManager);
-            eggTracker.eggNum -= eggCost;
-            eggCost += 5;
-            UpdateEggCostNum();
-        }        
-    }
-    public void DrawCard(HandManager handManager)
+
+    public bool DrawCard(HandManager handManager)
     {
         if (allCards.Count == 0)
-            return;
+            return false;
 
-        if (currentHandSize < maxHandSize)
+        if (CanDraw())
         {
             Card nextCard = allCards[currentIndex];
             handManager.AddCardToHand(nextCard);
             currentIndex = (currentIndex + 1) % allCards.Count;
-        }
-    }
-        public void UpdateEggCostNum()
-    {
-        drawCostText.text = "$ " + eggCost.ToString();
-    }
-    public IEnumerator DecayEggCost()
-    {
-        while (true)
+            return true;
+        } else
         {
-            yield return new WaitForSeconds(5f);
-            if (eggCost > 10)
-            {
-                --eggCost;
-                UpdateEggCostNum();
-            }
+            return false;
         }
     }
+
+    public bool DrawCard()
+    {
+        return DrawCard(handManager);
+    }
+    public bool CanDraw()
+    {
+        return currentHandSize < maxHandSize;
+    }
+
 }
