@@ -10,7 +10,14 @@ public class AntController : MonoBehaviour
     public GameObject targetObj;
     // private Vector2 position;
     public int antState = 0;
+    private Transform antSprite;
+    public SpriteRenderer unitSprite;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        antSprite = transform.Find("Sprite");
+        unitSprite = antSprite.GetComponent<SpriteRenderer>();
+    }
     void Start()
     {
         // position = gameObject.transform.position;
@@ -25,5 +32,11 @@ public class AntController : MonoBehaviour
                 // position = Vector2.MoveTowards(position, targetObj.transform.position, moveSpeed * Time.deltaTime).normalized;
                 break;
         }
+    }
+
+    public void FlipAnt()
+    {
+        unitSprite.flipY = true;
+        antSprite.transform.position = transform.position + new Vector3(0, -.4f, 0);
     }
 }
