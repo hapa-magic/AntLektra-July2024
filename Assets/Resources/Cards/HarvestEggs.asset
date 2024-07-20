@@ -17,13 +17,12 @@ MonoBehaviour:
   timeActive: 0
   minAnts: 1
   maxAnts: 2
-  numAnts: 2
   effect:
   - {fileID: 11400000, guid: 0f98d64907d699148adb6728a36c94a9, type: 2}
   - {fileID: 11400000, guid: 6439013500eef6b4598c0f7f1f686a66, type: 2}
   - {fileID: 11400000, guid: 6439013500eef6b4598c0f7f1f686a66, type: 2}
   ant: {fileID: 5213699103791978811, guid: 380604b4e25860d4fa640f3d7a6e171a, type: 3}
-  cardFace: {fileID: 4450410871599816025, guid: 380604b4e25860d4fa640f3d7a6e171a, type: 3}
+  cardSprite: {fileID: 21300000, guid: 7ad599ffd61676f49a7307fc8057ee7d, type: 3}
   deckType: 0
   health: 0
   attack: 0

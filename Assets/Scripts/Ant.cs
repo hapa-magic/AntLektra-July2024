@@ -7,6 +7,10 @@ namespace HapaMagic {
         
     [CreateAssetMenu(fileName = "New Ant", menuName = "Ant")] 
     public class Ant : ScriptableObject {
-        //public Image 
+        public int currHealth;
+        public int maxHealth;
+        public int attack;
+        public int moveSpeed;
+        public Sprite antSprite;
     }
 }

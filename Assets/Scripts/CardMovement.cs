@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using HapaMagic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private GameObject playTarget;
     [SerializeField] public GameObject cardPreviewParent;
     private CardPreview cardPreview;
+    private GameManager gameManager;
     
     [SerializeField] private Vector3 movementOffset = new Vector3 (-300, 280, 0);
     [SerializeField] private float selectScale = 1.1f;
@@ -42,6 +44,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         UILayer = LayerMask.NameToLayer("UI");
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
+        gameManager = FindAnyObjectByType<GameManager>();
 
         if (canvas != null)
         {
@@ -118,7 +121,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             originalRotation = rectTransform.localRotation;
             originalScale = rectTransform.localScale;
 
-            cardPreview.PreviewCard(rectTransform.gameObject);
+            cardPreview.PreviewCard(rectTransform.gameObject.GetComponent<CardDisplay>().cardData);
 
             currentState = 1;
         } /* else if (currentState == 5) {
@@ -212,12 +215,19 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     }
 
     private bool PlayCard(Transform newParent) {
-        currentState = 5;
-        transform.SetParent(newParent, false);
-        rectTransform.position = newParent.GetComponentInParent<RectTransform>().position;
         Card card = GetComponent<CardDisplay>().cardData;
-        cardPreview.DestroyPreview();
-        return newParent.GetComponent<PlaySpot>().ActivateAbility(card.effect[0], card.numAnts);
+
+        if (card.eggCost >= gameManager.PlayerEggs)
+        {
+            gameManager.PlayerEggs -= card.eggCost;
+            gameManager.UpdatePlayerEggs();
+            currentState = 5;
+            rectTransform.position = new Vector3(1000, 1000, 0);
+            cardPreview.DestroyPreview();
+            newParent.GetComponent<PlaySpot>().ActivateAbility(card);
+            return true;
+        }
+        else return false;
     }
 
     private void HandleAlmostPlayState() {

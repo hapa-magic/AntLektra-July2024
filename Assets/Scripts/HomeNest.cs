@@ -13,6 +13,7 @@ public class HomeNest : MonoBehaviour
     public float spawnWaitTime;
     GameObject pheremoneStart;
     GridCell thisCell;
+    public List<Transform> cells = new List<Transform>();
 
 
 
@@ -28,12 +29,13 @@ public class HomeNest : MonoBehaviour
     {
         // if ()
     }
-    public IEnumerator SpawnAnt(GameObject ant, int power) {
+    public IEnumerator SpawnAnt(GameObject ant, int power, PlaySpot playSpot) {
         for (int i = 0; i < power; ++i) {
             GameObject newAnt = Instantiate(ant, transform.position, Quaternion.identity, spawnParent.transform);
             AntController antControl = newAnt.GetComponent<AntController>();
             antControl.targetObj = pheremoneStart;
             yield return new WaitForSeconds(spawnWaitTime);
         }
+        playSpot.Discard();
     }
 }

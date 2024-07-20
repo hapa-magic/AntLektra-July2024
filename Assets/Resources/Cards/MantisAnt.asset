@@ -13,17 +13,16 @@ MonoBehaviour:
   m_Name: MantisAnt
   m_EditorClassIdentifier: 
   cardName: Mantis Ants
-  eggCost: 20
+  eggCost: 25
   timeActive: 10
   minAnts: 3
   maxAnts: 6
-  numAnts: 5
   effect:
   - {fileID: 11400000, guid: 065675531ef4a78438b36344ab6bc0bd, type: 2}
   - {fileID: 11400000, guid: 6439013500eef6b4598c0f7f1f686a66, type: 2}
   - {fileID: 11400000, guid: 6439013500eef6b4598c0f7f1f686a66, type: 2}
   ant: {fileID: 6452456339262450656, guid: 8e7bfc2d7e497814987330ba4714f52a, type: 3}
-  cardFace: {fileID: 0}
+  cardSprite: {fileID: 21300000, guid: 53fa4b49fb0dd164fb890273d1688074, type: 3}
   deckType: 2
   health: 10
   attack: 25
