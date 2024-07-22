@@ -11,21 +11,68 @@ public class GridCell : MonoBehaviour
     public GameObject objectInCell;
     public GameObject nextCell;
     public GameObject previousCell;
-    public void SetPheremoneIndicator(List<Transform> trailList)
+    SpriteRenderer spriteRenderer;
+    void Awake()
     {
-        cellState = 2;
-        foreach (GameObject go in connectedCells)
+        if (GetComponent<SpriteRenderer>() != null)
         {
-            if (go.GetComponent<GridCell>().nextCell != this.gameObject) {
-                go.GetComponent<GridCell>().cellState = 1;
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        } else
+        {
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        }
+    }
+
+
+    public void SetPheremoneIndicator()
+    {
+        if (cellState != 2)
+        {
+            SetCellState(2);
+            foreach (GameObject go in connectedCells)
+            {
+                if (go.GetComponent<GridCell>().cellState == 0)
+                {
+                    go.GetComponent<GridCell>().SetCellState(1);
+                }
             }
         }
-        trailList.Add(this.transform);
+    }
+    public void RemovePheremoneIndicator()
+    {
+        foreach (GameObject go in connectedCells)
+        {
+            if (go.GetComponent<GridCell>().cellState == 1)
+            {
+                go.GetComponent<GridCell>().SetCellState(0);
+            }
+        }
     }
     public void ErasePheremoneTrail()
     {
+        RemovePheremoneIndicator();
         nextCell = null;
         previousCell = null;
+        SetCellState(0);
+    }
+
+    public void SetCellState(int cellState)
+    {
+        this.cellState = cellState;
+        switch (cellState)
+        {
+            case 0:
+                spriteRenderer.color = Color.white;
+                break;
+
+            case 1:
+                spriteRenderer.color = Color.blue;
+                break;
+
+            case 2:
+                spriteRenderer.color = Color.magenta;
+                break;
+        }
     }
 
 }

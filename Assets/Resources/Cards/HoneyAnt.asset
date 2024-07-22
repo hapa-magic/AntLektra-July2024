@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e30edb449510c4a9d42dcf9283ed60, type: 3}
   m_Name: HoneyAnt
   m_EditorClassIdentifier: 
-  cardName: Honey Ants
+  cardName: Honey Ant
   eggCost: 15
   timeActive: 10
   minAnts: 3

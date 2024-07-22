@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 130866}
   - component: {fileID: 130867}
   - component: {fileID: 130868}
+  - component: {fileID: 130869}
   m_Layer: 0
   m_Name: Circle (10)
   m_TagString: Untagged
@@ -222,11 +223,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 1167682104}
   - {fileID: 40255297}
   - {fileID: 2144243159}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &130869
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130865}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &3902221
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +277,7 @@ GameObject:
   - component: {fileID: 3902222}
   - component: {fileID: 3902223}
   - component: {fileID: 3902224}
+  - component: {fileID: 3902225}
   m_Layer: 0
   m_Name: Circle (18)
   m_TagString: Untagged
@@ -326,11 +366,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 545294432}
   - {fileID: 1910009396}
   - {fileID: 1618350083}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &3902225
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3902221}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &18554680
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +538,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 19311438}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 699722354}
+        m_TargetAssemblyTypeName: HomeNest, Assembly-CSharp
+        m_MethodName: StartNewTrail
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &19311438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,6 +600,7 @@ GameObject:
   - component: {fileID: 27288426}
   - component: {fileID: 27288427}
   - component: {fileID: 27288428}
+  - component: {fileID: 27288429}
   m_Layer: 0
   m_Name: Circle (17)
   m_TagString: Untagged
@@ -598,11 +689,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 1862838253}
   - {fileID: 784789290}
   - {fileID: 1618350083}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &27288429
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27288425}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &33654721
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +877,7 @@ GameObject:
   - component: {fileID: 40255298}
   - component: {fileID: 40255299}
   - component: {fileID: 40255300}
+  - component: {fileID: 40255301}
   m_Layer: 0
   m_Name: Circle (8)
   m_TagString: Untagged
@@ -836,11 +966,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 1629417357}
   - {fileID: 130865}
   - {fileID: 1870762827}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &40255301
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40255297}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &97581381
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,6 +1103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 123222452}
   - component: {fileID: 123222451}
+  - component: {fileID: 123222453}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -954,10 +1123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd4dc6d853e82b4a9b1ed4f6bba92aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerEggs: 50
   eggCost: 0
   eggDecayValue: 5
   eggIncrementValue: 5
-  eggDecayTime: 0
+  eggDecayTime: 5
+  eggIncome: 5
   eggCostText: {fileID: 1274395023}
   playerEggText: {fileID: 634212976}
   PlayingCard: 0
@@ -976,6 +1147,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &123222453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123222450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252804106bf486345a25d76c20ce9812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisCamera: {fileID: 519420031}
 --- !u!1 &125802379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,7 +1781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 699722351}
   discardManager: {fileID: 630611793}
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 1784328600}
 --- !u!114 &272036257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1847,6 +2031,7 @@ GameObject:
   - component: {fileID: 430369251}
   - component: {fileID: 430369252}
   - component: {fileID: 430369253}
+  - component: {fileID: 430369254}
   m_Layer: 0
   m_Name: Circle (13)
   m_TagString: Untagged
@@ -1935,10 +2120,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 725453695}
   - {fileID: 1201730249}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &430369254
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430369250}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &468861579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,7 +2215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 699722351}
   discardManager: {fileID: 630611793}
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 237277997}
 --- !u!114 &468861582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2321,6 +2544,7 @@ GameObject:
   - component: {fileID: 545294433}
   - component: {fileID: 545294434}
   - component: {fileID: 545294435}
+  - component: {fileID: 545294436}
   m_Layer: 0
   m_Name: Circle (15)
   m_TagString: Untagged
@@ -2409,11 +2633,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 729996142}
   - {fileID: 1629417357}
   - {fileID: 3902221}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &545294436
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545294432}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &563616536
 GameObject:
   m_ObjectHideFlags: 0
@@ -2591,8 +2853,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c29bb4d2d64161419180c19ffd8cb16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eggText: {fileID: 634212976}
-  eggNum: 0
 --- !u!114 &634212976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2613,7 +2873,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 50
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75bee7fb0557b7c4a8ee414a5a910e83, type: 2}
   m_sharedMaterial: {fileID: -7598159489060429097, guid: 75bee7fb0557b7c4a8ee414a5a910e83, type: 2}
@@ -2776,6 +3036,7 @@ GameObject:
   - component: {fileID: 699722353}
   - component: {fileID: 699722354}
   - component: {fileID: 699722355}
+  - component: {fileID: 699722357}
   m_Layer: 0
   m_Name: HomeNest
   m_TagString: Untagged
@@ -2792,10 +3053,11 @@ Transform:
   m_GameObject: {fileID: 699722351}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -8.98, y: -0.06, z: 0}
+  m_LocalScale: {x: 4.0518, y: 2.8311, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1904731264}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &699722354
@@ -2812,12 +3074,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _antPrefab: {fileID: 5213699103791978811, guid: 380604b4e25860d4fa640f3d7a6e171a, type: 3}
   _honeyAntPrefab: {fileID: 0}
-  _beetleAntPrefab: {fileID: 4928355592266149471, guid: 01b04e5995c68e4459580769800eba7a, type: 3}
-  _mantisAntPrefab: {fileID: 6452456339262450656, guid: 8e7bfc2d7e497814987330ba4714f52a, type: 3}
+  _beetleAntPrefab: {fileID: 7339053411434909624, guid: 3ab98247f68d3134e9e9ec9c7819466b, type: 3}
+  _mantisAntPrefab: {fileID: 3877671883910683382, guid: 6f8c6a67b524c3646857b50fbcda29f3, type: 3}
   _robotAntPrefab: {fileID: 0}
   spawnParent: {fileID: 1950835712}
+  detectClick: {fileID: 123222450}
   spawnWaitTime: 1
   cells: []
+  pheremoneState: 1
 --- !u!114 &699722355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2832,10 +3096,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 1
+  cellState: 0
   connectedCells:
   - {fileID: 1743862857}
   - {fileID: 1519764958}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &699722357
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699722351}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &702105596
 GameObject:
   m_ObjectHideFlags: 0
@@ -3064,6 +3366,7 @@ GameObject:
   - component: {fileID: 725453696}
   - component: {fileID: 725453697}
   - component: {fileID: 725453698}
+  - component: {fileID: 725453699}
   m_Layer: 0
   m_Name: Circle (14)
   m_TagString: Untagged
@@ -3152,10 +3455,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 430369250}
   - {fileID: 784789290}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &725453699
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725453695}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &729996142
 GameObject:
   m_ObjectHideFlags: 0
@@ -3167,6 +3508,7 @@ GameObject:
   - component: {fileID: 729996143}
   - component: {fileID: 729996144}
   - component: {fileID: 729996145}
+  - component: {fileID: 729996146}
   m_Layer: 0
   m_Name: Circle (6)
   m_TagString: Untagged
@@ -3255,10 +3597,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 545294432}
   - {fileID: 1167682104}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &729996146
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729996142}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &743834339
 GameObject:
   m_ObjectHideFlags: 0
@@ -3404,6 +3784,7 @@ GameObject:
   - component: {fileID: 784789291}
   - component: {fileID: 784789292}
   - component: {fileID: 784789293}
+  - component: {fileID: 784789294}
   m_Layer: 0
   m_Name: Circle (16)
   m_TagString: Untagged
@@ -3492,11 +3873,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 1982307886}
   - {fileID: 27288425}
   - {fileID: 725453695}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &784789294
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784789290}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &834096900
 GameObject:
   m_ObjectHideFlags: 0
@@ -3904,6 +4323,7 @@ GameObject:
   - component: {fileID: 1167682105}
   - component: {fileID: 1167682106}
   - component: {fileID: 1167682107}
+  - component: {fileID: 1167682108}
   m_Layer: 0
   m_Name: Circle (12)
   m_TagString: Untagged
@@ -3992,10 +4412,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 729996142}
   - {fileID: 130865}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &1167682108
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167682104}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &1201730249
 GameObject:
   m_ObjectHideFlags: 0
@@ -4007,6 +4465,7 @@ GameObject:
   - component: {fileID: 1201730250}
   - component: {fileID: 1201730251}
   - component: {fileID: 1201730252}
+  - component: {fileID: 1201730253}
   m_Layer: 0
   m_Name: Circle (11)
   m_TagString: Untagged
@@ -4095,11 +4554,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 1281440088}
   - {fileID: 1379982082}
   - {fileID: 430369250}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &1201730253
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201730249}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &1230190137
 GameObject:
   m_ObjectHideFlags: 0
@@ -4454,6 +4951,7 @@ GameObject:
   - component: {fileID: 1281440089}
   - component: {fileID: 1281440090}
   - component: {fileID: 1281440091}
+  - component: {fileID: 1281440092}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Untagged
@@ -4542,11 +5040,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 1519764958}
   - {fileID: 1870762827}
   - {fileID: 1201730249}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &1281440092
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281440088}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &1342859927
 GameObject:
   m_ObjectHideFlags: 0
@@ -4613,8 +5149,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.176, y: 38.371}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 9.157703, y: 44.841084}
+  m_SizeDelta: {x: 81.685, y: 59.3947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1355003689
 MonoBehaviour:
@@ -4665,6 +5201,7 @@ GameObject:
   - component: {fileID: 1379982083}
   - component: {fileID: 1379982084}
   - component: {fileID: 1379982085}
+  - component: {fileID: 1379982086}
   m_Layer: 0
   m_Name: Circle (9)
   m_TagString: Untagged
@@ -4753,11 +5290,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 1982307886}
   - {fileID: 1201730249}
   - {fileID: 1870762827}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &1379982086
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379982082}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &1388997121
 GameObject:
   m_ObjectHideFlags: 0
@@ -4906,6 +5481,7 @@ GameObject:
   - component: {fileID: 1519764959}
   - component: {fileID: 1519764960}
   - component: {fileID: 1519764961}
+  - component: {fileID: 1519764962}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Untagged
@@ -4994,10 +5570,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 1281440088}
   - {fileID: 699722351}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &1519764962
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519764958}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &1578488281
 GameObject:
   m_ObjectHideFlags: 0
@@ -5143,6 +5757,7 @@ GameObject:
   - component: {fileID: 1618350084}
   - component: {fileID: 1618350085}
   - component: {fileID: 1618350086}
+  - component: {fileID: 1618350087}
   m_Layer: 0
   m_Name: Circle (5)
   m_TagString: Untagged
@@ -5231,12 +5846,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 1982307886}
   - {fileID: 1629417357}
   - {fileID: 3902221}
   - {fileID: 27288425}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &1618350087
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618350083}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &1629417357
 GameObject:
   m_ObjectHideFlags: 0
@@ -5248,6 +5901,7 @@ GameObject:
   - component: {fileID: 1629417358}
   - component: {fileID: 1629417359}
   - component: {fileID: 1629417360}
+  - component: {fileID: 1629417361}
   m_Layer: 0
   m_Name: Circle (14)
   m_TagString: Untagged
@@ -5336,11 +5990,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 1618350083}
   - {fileID: 545294432}
   - {fileID: 40255297}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &1629417361
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629417357}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &1636747049
 GameObject:
   m_ObjectHideFlags: 0
@@ -5445,6 +6137,7 @@ GameObject:
   - component: {fileID: 1743862858}
   - component: {fileID: 1743862859}
   - component: {fileID: 1743862860}
+  - component: {fileID: 1743862861}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -5533,10 +6226,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 2144243159}
   - {fileID: 699722351}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &1743862861
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743862857}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &1749186364
 GameObject:
   m_ObjectHideFlags: 0
@@ -5724,7 +6455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 699722351}
   discardManager: {fileID: 630611793}
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 382543720}
 --- !u!114 &1760368583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5797,7 +6528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.010298, y: 54.966167}
+  m_AnchoredPosition: {x: -10.2, y: 0}
   m_SizeDelta: {x: 68.7733, y: 41.1495}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1784328600
@@ -6108,10 +6839,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 1910009396}
   - {fileID: 1862838253}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
 --- !u!1 &1828984666
 GameObject:
   m_ObjectHideFlags: 0
@@ -6176,6 +6910,7 @@ GameObject:
   - component: {fileID: 1862838254}
   - component: {fileID: 1862838255}
   - component: {fileID: 1862838256}
+  - component: {fileID: 1862838257}
   m_Layer: 0
   m_Name: Circle (20)
   m_TagString: Untagged
@@ -6264,10 +6999,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 27288425}
   - {fileID: 1826268501}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &1862838257
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862838253}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &1870762827
 GameObject:
   m_ObjectHideFlags: 0
@@ -6279,6 +7052,7 @@ GameObject:
   - component: {fileID: 1870762828}
   - component: {fileID: 1870762829}
   - component: {fileID: 1870762830}
+  - component: {fileID: 1870762831}
   m_Layer: 0
   m_Name: Circle (4)
   m_TagString: Untagged
@@ -6367,12 +7141,134 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 2144243159}
   - {fileID: 1281440088}
   - {fileID: 1379982082}
   - {fileID: 40255297}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &1870762831
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870762827}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
+--- !u!1 &1904731263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1904731264}
+  - component: {fileID: 1904731265}
+  m_Layer: 0
+  m_Name: Icon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1904731264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904731263}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 699722353}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1904731265
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904731263}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 451503429
+  m_SortingLayer: 3
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 7ad599ffd61676f49a7307fc8057ee7d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.44, y: 0.44}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1910009396
 GameObject:
   m_ObjectHideFlags: 0
@@ -6384,6 +7280,7 @@ GameObject:
   - component: {fileID: 1910009397}
   - component: {fileID: 1910009398}
   - component: {fileID: 1910009399}
+  - component: {fileID: 1910009400}
   m_Layer: 0
   m_Name: Circle (19)
   m_TagString: Untagged
@@ -6472,10 +7369,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 1826268501}
   - {fileID: 3902221}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &1910009400
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910009396}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &1950835712
 GameObject:
   m_ObjectHideFlags: 0
@@ -6518,6 +7453,7 @@ GameObject:
   - component: {fileID: 1982307887}
   - component: {fileID: 1982307888}
   - component: {fileID: 1982307889}
+  - component: {fileID: 1982307890}
   m_Layer: 0
   m_Name: Circle (7)
   m_TagString: Untagged
@@ -6606,11 +7542,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 784789290}
   - {fileID: 1618350083}
   - {fileID: 1379982082}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &1982307890
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982307886}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1 &2002279046
 GameObject:
   m_ObjectHideFlags: 0
@@ -6910,6 +7884,7 @@ GameObject:
   - component: {fileID: 2144243160}
   - component: {fileID: 2144243161}
   - component: {fileID: 2144243162}
+  - component: {fileID: 2144243163}
   m_Layer: 0
   m_Name: Circle (3)
   m_TagString: Untagged
@@ -6998,16 +7973,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFull: 0
   fogOfWar: 0
+  cellState: 0
   connectedCells:
   - {fileID: 130865}
   - {fileID: 1870762827}
   - {fileID: 1743862857}
   objectInCell: {fileID: 0}
+  nextCell: {fileID: 0}
+  previousCell: {fileID: 0}
+--- !u!58 &2144243163
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144243159}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21999998
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1636747051}
+  - {fileID: 123222452}
   - {fileID: 519420032}
   - {fileID: 699722353}
   - {fileID: 1826268503}
@@ -7016,6 +8030,5 @@ SceneRoots:
   - {fileID: 1342859928}
   - {fileID: 1399000832}
   - {fileID: 711615577}
-  - {fileID: 123222452}
   - {fileID: 2057584097}
   - {fileID: 1080914167}

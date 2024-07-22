@@ -1,24 +1,27 @@
 using HapaMagic;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
     private int playerHealth = 20;
-    private int playerEggs;
+    public int playerEggs = 50;
     private int difficulty = 5;
     public int eggCost;
     public int eggDecayValue = 5;
     public int eggIncrementValue = 5;
     public int eggDecayTime;
+    public int eggIncome;
     public TMP_Text eggCostText;
     public TMP_Text playerEggText;
-
+    private DetectMouseOnGameObj detectMouse;
     public OptionsManager OptionsManager { get; private set; }
     public AudioManager AudioManager { get; private set; }
     public DeckManager DeckManager { get; private set; }
@@ -43,7 +46,9 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        detectMouse = GetComponent<DetectMouseOnGameObj>();
         StartCoroutine(DecayEggCost());
+        StartCoroutine(IncrementEggs());
     }
 
     private void InitializeManagers()
@@ -153,4 +158,18 @@ public class GameManager : MonoBehaviour
             Debug.Log("Can't afford it!!");
         }
     }
+    public IEnumerator IncrementEggs()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5f);
+            playerEggs += eggIncome;
+            UpdateEggText();
+        }
+    }
+    public void UpdateEggText()
+    {
+        playerEggText.text = playerEggs.ToString();
+    }
+
 }

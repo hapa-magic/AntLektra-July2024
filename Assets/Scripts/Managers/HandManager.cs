@@ -36,8 +36,6 @@ namespace HapaMagic
         {
             int cardCount = cardsInHand.Count;
 
-
-
             for (int i = 0; i < cardCount; i++)
             {
                 cardsInHand[i].transform.position = cardPositions[i].position;

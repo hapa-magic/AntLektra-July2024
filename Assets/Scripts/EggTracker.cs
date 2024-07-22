@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EggTracker : MonoBehaviour
 {
-    public TMP_Text eggText;
+    /*public TMP_Text eggText;
     public int eggNum;
     private void Start()
     {
@@ -31,5 +31,5 @@ public class EggTracker : MonoBehaviour
             eggNum++;
             UpdateEggText();
         }
-    }
+    }*/
 }

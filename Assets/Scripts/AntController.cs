@@ -8,7 +8,8 @@ public class AntController : MonoBehaviour
     public int attack;
     public float moveSpeed = 0.5f;
     public GameObject targetObj;
-    // private Vector2 position;
+    public GameObject prevObj;
+    private Vector2 moveVector;
     public int antState = 0;
     private Transform antSprite;
     public SpriteRenderer unitSprite;
@@ -28,8 +29,35 @@ public class AntController : MonoBehaviour
     {
         switch (antState) {
             case 0:
-                transform.Translate((targetObj.transform.position - transform.position).normalized * moveSpeed * Time.deltaTime);
+                if (unitSprite.flipX == false && transform.position.x > targetObj.transform.position.x)
+                {
+                    FindNextTarget();
+                } else if (unitSprite.flipX == true && transform.position.x < targetObj.transform.position.x)
+                {
+                    FindNextTarget();
+                }
+                transform.Translate(moveVector * moveSpeed * Time.deltaTime);
                 // position = Vector2.MoveTowards(position, targetObj.transform.position, moveSpeed * Time.deltaTime).normalized;
+                break;
+
+            case 1:
+                if (unitSprite.flipX == false && transform.position.x > targetObj.transform.position.x)
+                {
+                    FindPrevTarget();
+                }
+                else if (unitSprite.flipX == true && transform.position.x < targetObj.transform.position.x)
+                {
+                    FindPrevTarget();
+                }
+                transform.Translate(moveVector * moveSpeed * Time.deltaTime);
+                break;
+
+            case 2: 
+                if (targetObj != null)
+                {
+                    moveVector = new Vector2(targetObj.transform.position.x - transform.position.x, targetObj.transform.position.y - transform.position.y).normalized;
+                    antState = 0;
+                }
                 break;
         }
     }
@@ -38,5 +66,62 @@ public class AntController : MonoBehaviour
     {
         unitSprite.flipY = true;
         antSprite.transform.position = transform.position + new Vector3(0, -.4f, 0);
+    }
+    private void FindNextTarget()
+    {
+        transform.position = targetObj.transform.position;
+        if (targetObj.GetComponent<GridCell>().nextCell == null)
+        {
+            ChangeAntState(1);
+        }
+        else
+        {
+            targetObj = targetObj.GetComponent<GridCell>().nextCell;
+            moveVector = new Vector2(targetObj.transform.position.x - transform.position.x, targetObj.transform.position.y - transform.position.y).normalized;
+            if (moveVector.x > 0)
+            {
+                unitSprite.flipX = false;
+            }
+            else
+            {
+                unitSprite.flipX = true;
+            }
+        }
+    }
+    public void ChangeAntState(int newState)
+    {
+        antState = newState;
+
+        switch (antState)
+        {
+            case 0:
+                targetObj = targetObj.GetComponent<GridCell>().nextCell;
+                break;
+
+            case 1:
+                targetObj = targetObj.GetComponent<GridCell>().previousCell;
+                break;
+        }
+    }
+    private void FindPrevTarget()
+    {
+        transform.position = targetObj.transform.position;
+        if (targetObj.GetComponent<GridCell>().nextCell == null)
+        {
+            ChangeAntState(0);
+        }
+        else
+        {
+            targetObj = targetObj.GetComponent<GridCell>().previousCell;
+            moveVector = new Vector2(targetObj.transform.position.x - transform.position.x, targetObj.transform.position.y - transform.position.y).normalized;
+            if (moveVector.x > 0)
+            {
+                unitSprite.flipX = false;
+            }
+            else
+            {
+                unitSprite.flipX = true;
+            }
+        }
     }
 }

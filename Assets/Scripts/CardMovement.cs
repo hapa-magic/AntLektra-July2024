@@ -217,9 +217,10 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private bool PlayCard(Transform newParent) {
         Card card = GetComponent<CardDisplay>().cardData;
 
-        if (card.eggCost >= gameManager.PlayerEggs)
+        if (card.eggCost <= gameManager.playerEggs)
         {
-            gameManager.PlayerEggs -= card.eggCost;
+            Debug.Log("Tryign to play a caaaaaard!");
+            gameManager.playerEggs -= card.eggCost;
             gameManager.UpdatePlayerEggs();
             currentState = 5;
             rectTransform.position = new Vector3(1000, 1000, 0);

@@ -7,6 +7,8 @@ using UnityEngine;
 public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
+    public List<Card> startingDeck = new List<Card>();
+    public List<int> startingCardsCountPer = new List<int>();
 
     public int startingHandSize = 5;
 
@@ -24,7 +26,8 @@ public class DeckManager : MonoBehaviour
         Card[] cards = Resources.LoadAll<Card>("Cards");
 
         //Add the loaded cards to the allCards list
-        allCards.AddRange(cards);
+        // allCards.AddRange(cards);
+        GenerateStartingDeck(startingDeck, startingCardsCountPer);
 
         handManager = FindObjectOfType<HandManager>();
         maxHandSize = handManager.maxHandSize;
@@ -85,5 +88,15 @@ public class DeckManager : MonoBehaviour
         drawPileManager.MakeDrawPile(allCards);
         drawPileManager.BattleSetup(startingHandSize, maxHandSize);
         startBattleRun = false;
+    }
+
+    private void GenerateStartingDeck(Card[] startingDeck, List<int> startingPer)
+    {
+        for (int i = 0; i < startingDeck.Length; i++)
+        {
+            for (int j = 0; j < startingPer[i]; ++j) {
+
+            }
+        }
     }
 }
