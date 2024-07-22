@@ -19,6 +19,7 @@ public class HomeNest : MonoBehaviour
     GameObject pheremoneStart;
     GridCell thisCell;
     public List<Transform> cells = new List<Transform>();
+    public List<GameObject> spawningCards = new List<GameObject>(); 
     private bool upsideDown = false;
     public int pheremoneState = 1;
 
@@ -47,7 +48,6 @@ public class HomeNest : MonoBehaviour
     // Update is called once per frame
 
     public IEnumerator SpawnAnt(GameObject ant, int power, PlaySpot playSpot) {
-        Debug.Log("Spawning an ant!");
         for (int i = 0; i < power; ++i) {
             GameObject newAnt = Instantiate(ant, transform.position, Quaternion.identity, spawnParent.transform);
             if (!upsideDown)
@@ -71,7 +71,6 @@ public class HomeNest : MonoBehaviour
         pheremoneState = 1;
         GetComponent<GridCell>().SetPheremoneIndicator();
         cells.Add(this.transform);
-        Debug.Log("The list now has " + cells.Count + " members@!");
     }
     private void CheckForPheremoneTrailAdd()
     {
@@ -117,7 +116,7 @@ public class HomeNest : MonoBehaviour
         Debug.Log("Ending pheremone state");
         pheremoneState = 0;
     }
-    public void PlayInstant(Effect.EffectAbility effectAbility)
+    public void PlayInstant(Effect.EffectAbility effectAbility, PlaySpot playSpot)
     {
         switch (effectAbility)
         {
@@ -128,9 +127,18 @@ public class HomeNest : MonoBehaviour
                 gameManager.GetComponent<GameManager>().eggIncome += 1;
                 break;
 
-            //case Effect.EffectAbility.Cycle:
+            case Effect.EffectAbility.Draw:
+                // draw function here
+                gameManager.GetComponent<GameManager>().Draw();
+                break;
 
+            // case Effect.EffectAbility.Discard:
+                
 
+                //case Effect.EffectAbility.Cycle:
+
+      
         }
+        playSpot.Discard();
     }
 }

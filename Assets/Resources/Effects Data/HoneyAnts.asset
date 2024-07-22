@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectName: HoneyAnt
   description: Increases your egg income
-  effectType: 1
+  effectType: 0
   effectAbility: 2

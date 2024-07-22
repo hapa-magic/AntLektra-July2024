@@ -1781,6 +1781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 699722351}
   discardManager: {fileID: 630611793}
+  handManager: {fileID: 0}
   cardImage: {fileID: 1784328600}
 --- !u!114 &272036257
 MonoBehaviour:
@@ -2215,6 +2216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 699722351}
   discardManager: {fileID: 630611793}
+  handManager: {fileID: 0}
   cardImage: {fileID: 237277997}
 --- !u!114 &468861582
 MonoBehaviour:
@@ -3078,9 +3080,10 @@ MonoBehaviour:
   _mantisAntPrefab: {fileID: 3877671883910683382, guid: 6f8c6a67b524c3646857b50fbcda29f3, type: 3}
   _robotAntPrefab: {fileID: 0}
   spawnParent: {fileID: 1950835712}
-  detectClick: {fileID: 123222450}
+  gameManager: {fileID: 123222450}
   spawnWaitTime: 1
   cells: []
+  spawningCards: []
   pheremoneState: 1
 --- !u!114 &699722355
 MonoBehaviour:
@@ -6455,6 +6458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 699722351}
   discardManager: {fileID: 630611793}
+  handManager: {fileID: 0}
   cardImage: {fileID: 382543720}
 --- !u!114 &1760368583
 MonoBehaviour:
@@ -7713,6 +7717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 699722351}
   discardManager: {fileID: 630611793}
+  handManager: {fileID: 0}
   cardImage: {fileID: 1230190139}
 --- !u!114 &2030024925
 MonoBehaviour:

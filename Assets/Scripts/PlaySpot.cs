@@ -11,6 +11,7 @@ public class PlaySpot : MonoBehaviour
     HomeNest homeNest;
     Card card;
     public DiscardManager discardManager;
+    public HandManager handManager;
     public Image cardImage;
 
     void Start() 
@@ -47,7 +48,7 @@ public class PlaySpot : MonoBehaviour
                     break;
 
                 case Effect.EffectType.Instant:
-                    homeNest.PlayInstant(effect.effectAbility);
+                    homeNest.PlayInstant(effect.effectAbility, playSpot);
                         break;
             }
             
@@ -55,7 +56,7 @@ public class PlaySpot : MonoBehaviour
         }
         return false;
     }
-    public bool ActivateAbility(Card card)
+    public bool ActivateAbility(Card card, GameObject thisObj)
     {
         this.card = card;
         cardImage.sprite = card.cardSprite;
@@ -69,7 +70,7 @@ public class PlaySpot : MonoBehaviour
         {
             ActivateAbility(card.effect[1], card.numAnts);
         }
-
+        homeNest.spawningCards.Add(thisObj);
         return true;
     }
 
@@ -77,5 +78,6 @@ public class PlaySpot : MonoBehaviour
     {
         discardManager.AddToDiscard(card);
         cardImage.enabled = false;
+        card = null;
     }
 }

@@ -15,4 +15,4 @@ MonoBehaviour:
   effectName: Discard
   description: Player discards cards
   effectType: 0
-  effectAbility: 7
+  effectAbility: 8

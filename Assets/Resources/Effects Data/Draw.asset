@@ -15,4 +15,4 @@ MonoBehaviour:
   effectName: Draw
   description: Player draws cards
   effectType: 0
-  effectAbility: 6
+  effectAbility: 7

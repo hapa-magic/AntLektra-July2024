@@ -15,4 +15,4 @@ MonoBehaviour:
   effectName: Cycle
   description: Discard then draw a card
   effectType: 0
-  effectAbility: 5
+  effectAbility: 6

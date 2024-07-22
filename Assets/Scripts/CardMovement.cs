@@ -223,9 +223,12 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             gameManager.playerEggs -= card.eggCost;
             gameManager.UpdatePlayerEggs();
             currentState = 5;
-            rectTransform.position = new Vector3(1000, 1000, 0);
             cardPreview.DestroyPreview();
-            newParent.GetComponent<PlaySpot>().ActivateAbility(card);
+            newParent.GetComponent<PlaySpot>().ActivateAbility(card, this.gameObject);
+            transform.SetParent(newParent);
+            rectTransform.position = new Vector3(1000, 1000, 0);
+            HandManager handManager = FindAnyObjectByType<HandManager>();
+            handManager.cardsInHand.Remove(this.gameObject);
             return true;
         }
         else return false;

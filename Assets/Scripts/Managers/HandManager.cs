@@ -16,7 +16,7 @@ namespace HapaMagic
             
         }
 
-        public void AddCardToHand(Card cardData)
+        public bool AddCardToHand(Card cardData)
         {
             if (cardsInHand.Count < maxHandSize)
             {
@@ -26,9 +26,11 @@ namespace HapaMagic
                 newCard.GetComponent<CardDisplay>().cardData = cardData;
 
                 UpdateHandVisuals();
+                return true;
             } else
             {
                 Debug.Log("Too many cards!");
+                return false;
             }
         }
 

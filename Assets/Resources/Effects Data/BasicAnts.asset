@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectName: SpawnAnts
   description: Spawns basics
-  effectType: 2
+  effectType: 1
   effectAbility: 1

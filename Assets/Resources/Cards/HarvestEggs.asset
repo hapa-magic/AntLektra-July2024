@@ -16,7 +16,7 @@ MonoBehaviour:
   eggCost: 10
   timeActive: 0
   minAnts: 1
-  maxAnts: 2
+  maxAnts: 1
   effect:
   - {fileID: 11400000, guid: 0f98d64907d699148adb6728a36c94a9, type: 2}
   - {fileID: 11400000, guid: 6439013500eef6b4598c0f7f1f686a66, type: 2}

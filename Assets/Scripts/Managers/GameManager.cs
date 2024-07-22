@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
 
     public void PayToDraw()
     {
-        if (eggCost > playerEggs && DeckManager.DrawCard())
+        if (eggCost <= playerEggs && DeckManager.DrawCard())
         {
             playerEggs -= eggCost;
             IncreaseEggCost();
@@ -170,6 +170,10 @@ public class GameManager : MonoBehaviour
     public void UpdateEggText()
     {
         playerEggText.text = playerEggs.ToString();
+    }
+    public bool Draw()
+    {
+        return DeckManager.DrawCard();
     }
 
 }
