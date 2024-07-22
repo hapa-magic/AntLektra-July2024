@@ -17,7 +17,7 @@ namespace HapaMagic
         {
             None,
             SpawnBasicAnt,
-            SpawnHoneyAnt,
+            HoneyAnt,
             SpawnBeetleAnt,
             SpawnMantisAnt,
             SpawnSoldierAnt,

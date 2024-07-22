@@ -27,18 +27,28 @@ public class PlaySpot : MonoBehaviour
     {
         if (homeNest != null) {
             PlaySpot playSpot = this;
-            switch (effect.effectAbility) {
-                case Effect.EffectAbility.SpawnBasicAnt:
-                    StartCoroutine(homeNest.SpawnAnt(homeNest._antPrefab, power, playSpot));
-                    break;
-                
-                case Effect.EffectAbility.SpawnMantisAnt:
-                    StartCoroutine(homeNest.SpawnAnt(homeNest._mantisAntPrefab, power, playSpot));
+            switch (effect.effectType) {
+                case Effect.EffectType.Active:
+                    Debug.Log("Should be spawning ants soon");
+                    switch (effect.effectAbility)
+                    {
+                        case Effect.EffectAbility.SpawnBasicAnt:
+                            StartCoroutine(homeNest.SpawnAnt(homeNest._antPrefab, power, playSpot));
+                            break;
+
+                        case Effect.EffectAbility.SpawnMantisAnt:
+                            StartCoroutine(homeNest.SpawnAnt(homeNest._mantisAntPrefab, power, playSpot));
+                            break;
+
+                        case Effect.EffectAbility.SpawnBeetleAnt:
+                            StartCoroutine(homeNest.SpawnAnt(homeNest._beetleAntPrefab, power, playSpot));
+                            break;
+                    }
                     break;
 
-                case Effect.EffectAbility.SpawnBeetleAnt:
-                    StartCoroutine(homeNest.SpawnAnt(homeNest._beetleAntPrefab, power, playSpot));
-                    break;
+                case Effect.EffectType.Instant:
+                    homeNest.PlayInstant(effect.effectAbility);
+                        break;
             }
             
             return true;

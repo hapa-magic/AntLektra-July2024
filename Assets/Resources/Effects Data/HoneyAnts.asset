@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa05af0fadf77f43ba9de4e6d25da0c, type: 3}
   m_Name: HoneyAnts
   m_EditorClassIdentifier: 
-  effectName: SpawnHoneyAnts
-  description: Spawns honey ants
+  effectName: HoneyAnt
+  description: Increases your egg income
   effectType: 1
   effectAbility: 2

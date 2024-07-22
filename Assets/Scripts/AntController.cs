@@ -65,7 +65,7 @@ public class AntController : MonoBehaviour
     public void FlipAnt()
     {
         unitSprite.flipY = true;
-        antSprite.transform.position = transform.position + new Vector3(0, -.4f, 0);
+        antSprite.transform.position = transform.position + new Vector3(0, -.3f, 0);
     }
     private void FindNextTarget()
     {

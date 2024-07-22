@@ -27,7 +27,7 @@ public class DeckManager : MonoBehaviour
 
         //Add the loaded cards to the allCards list
         // allCards.AddRange(cards);
-        GenerateStartingDeck(startingDeck, startingCardsCountPer);
+        GenerateStartingDeck(cards);
 
         handManager = FindObjectOfType<HandManager>();
         maxHandSize = handManager.maxHandSize;
@@ -90,13 +90,39 @@ public class DeckManager : MonoBehaviour
         startBattleRun = false;
     }
 
-    private void GenerateStartingDeck(Card[] startingDeck, List<int> startingPer)
+    private void GenerateStartingDeck(Card[] resourceCards)
     {
-        for (int i = 0; i < startingDeck.Length; i++)
+        for (int i = 0; i < resourceCards.Length; i++)
         {
-            for (int j = 0; j < startingPer[i]; ++j) {
+            switch (resourceCards[i].cardName)
+            {
+                case "Basic Ant":
+                    allCards.Add(resourceCards[i]);
+                    allCards.Add(resourceCards[i]);
+                    allCards.Add(resourceCards[i]);
+                    allCards.Add(resourceCards[i]);
+                    allCards.Add(resourceCards[i]);
+                    break;
 
+                case "Honey Ant":
+                    allCards.Add(resourceCards[i]);
+                    allCards.Add(resourceCards[i]);
+                    allCards.Add(resourceCards[i]);
+                    break;
+
+                case "Harvest Eggs":
+                    allCards.Add(resourceCards[i]);
+                    allCards.Add(resourceCards[i]);
+                    allCards.Add(resourceCards[i]);
+                    break;
+
+                case "Soldier Ant":
+                    allCards.Add(resourceCards[i]);
+                    allCards.Add(resourceCards[i]);
+                    allCards.Add(resourceCards[i]);
+                    break;
             }
+            Utility.Shuffle(allCards);
         }
     }
 }

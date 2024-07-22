@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using HapaMagic;
 using UnityEngine.EventSystems;
 
 public class HomeNest : MonoBehaviour
@@ -12,7 +13,7 @@ public class HomeNest : MonoBehaviour
     [SerializeField] public GameObject _mantisAntPrefab;
     [SerializeField] public GameObject _robotAntPrefab;
     [SerializeField] GameObject spawnParent;
-    public GameObject detectClick;
+    public GameObject gameManager;
     private DetectMouseOnGameObj detectMouse;
     public float spawnWaitTime;
     GameObject pheremoneStart;
@@ -25,7 +26,7 @@ public class HomeNest : MonoBehaviour
     void Start()
     {
         thisCell = GetComponent<GridCell>();
-        detectMouse = detectClick.GetComponent<DetectMouseOnGameObj>();
+        detectMouse = gameManager.GetComponent<DetectMouseOnGameObj>();
         StartNewTrail();
     }
     private void Update()
@@ -115,5 +116,21 @@ public class HomeNest : MonoBehaviour
         }
         Debug.Log("Ending pheremone state");
         pheremoneState = 0;
+    }
+    public void PlayInstant(Effect.EffectAbility effectAbility)
+    {
+        switch (effectAbility)
+        {
+            case Effect.EffectAbility.None:
+                break;
+
+            case Effect.EffectAbility.HoneyAnt:
+                gameManager.GetComponent<GameManager>().eggIncome += 1;
+                break;
+
+            //case Effect.EffectAbility.Cycle:
+
+
+        }
     }
 }
