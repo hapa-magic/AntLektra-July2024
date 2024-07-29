@@ -37,7 +37,6 @@ public class AntController : MonoBehaviour
                     FindNextTarget();
                 }
                 transform.Translate(moveVector * moveSpeed * Time.deltaTime);
-                // position = Vector2.MoveTowards(position, targetObj.transform.position, moveSpeed * Time.deltaTime).normalized;
                 break;
 
             case 1:
@@ -95,18 +94,20 @@ public class AntController : MonoBehaviour
         switch (antState)
         {
             case 0:
-                targetObj = targetObj.GetComponent<GridCell>().nextCell;
+                // targetObj = targetObj.GetComponent<GridCell>().nextCell;
+                FindNextTarget();
                 break;
 
             case 1:
-                targetObj = targetObj.GetComponent<GridCell>().previousCell;
+                //targetObj = targetObj.GetComponent<GridCell>().previousCell;
+                FindPrevTarget();
                 break;
         }
     }
     private void FindPrevTarget()
     {
-        transform.position = targetObj.transform.position;
-        if (targetObj.GetComponent<GridCell>().nextCell == null)
+        // transform.position = targetObj.transform.position;
+        if (targetObj.GetComponent<GridCell>().previousCell == null)
         {
             ChangeAntState(0);
         }

@@ -139,6 +139,6 @@ public class HomeNest : MonoBehaviour
 
       
         }
-        playSpot.Discard();
+        //playSpot.Discard();
     }
 }
