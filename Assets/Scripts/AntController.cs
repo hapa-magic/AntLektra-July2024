@@ -8,7 +8,6 @@ public class AntController : MonoBehaviour
     public int attack;
     public float moveSpeed = 0.5f;
     public GameObject targetObj;
-    public GameObject prevObj;
     private Vector2 moveVector;
     public int antState = 0;
     private Transform antSprite;
@@ -66,16 +65,19 @@ public class AntController : MonoBehaviour
         unitSprite.flipY = true;
         antSprite.transform.position = transform.position + new Vector3(0, -.3f, 0);
     }
-    private void FindNextTarget()
-    {
+    private void FindNextTarget() {
+        GridCell thisCell = targetObj.GetComponent<GridCell>();
         transform.position = targetObj.transform.position;
-        if (targetObj.GetComponent<GridCell>().nextCell == null)
+        if (thisCell.nextCell == null)
         {
-            ChangeAntState(1);
+            if (thisCell.previousCell == null) {
+                ChangeAntState(3);
+            } else {
+                ChangeAntState(1);
+            }
         }
-        else
-        {
-            targetObj = targetObj.GetComponent<GridCell>().nextCell;
+        else {
+            targetObj = thisCell.nextCell;
             moveVector = new Vector2(targetObj.transform.position.x - transform.position.x, targetObj.transform.position.y - transform.position.y).normalized;
             if (moveVector.x > 0)
             {
@@ -87,12 +89,10 @@ public class AntController : MonoBehaviour
             }
         }
     }
-    public void ChangeAntState(int newState)
-    {
+    public void ChangeAntState(int newState) {
         antState = newState;
 
-        switch (antState)
-        {
+        switch (antState) {
             case 0:
                 // targetObj = targetObj.GetComponent<GridCell>().nextCell;
                 FindNextTarget();
@@ -102,18 +102,19 @@ public class AntController : MonoBehaviour
                 //targetObj = targetObj.GetComponent<GridCell>().previousCell;
                 FindPrevTarget();
                 break;
+
+            case 3: // case if ant is confused 
+                StartCoroutine(WaitForPheremones());
+                break;
         }
     }
-    private void FindPrevTarget()
-    {
-        // transform.position = targetObj.transform.position;
-        if (targetObj.GetComponent<GridCell>().previousCell == null)
-        {
+    private void FindPrevTarget() {
+        GridCell thisCell = targetObj.GetComponent<GridCell>();
+        if (thisCell.previousCell == null) {
             ChangeAntState(0);
         }
-        else
-        {
-            targetObj = targetObj.GetComponent<GridCell>().previousCell;
+        else {
+            targetObj = thisCell.previousCell;
             moveVector = new Vector2(targetObj.transform.position.x - transform.position.x, targetObj.transform.position.y - transform.position.y).normalized;
             if (moveVector.x > 0)
             {
@@ -123,6 +124,20 @@ public class AntController : MonoBehaviour
             {
                 unitSprite.flipX = true;
             }
+        }
+    }
+    private IEnumerator WaitForPheremones() {
+        GridCell thisCell = targetObj.GetComponent<GridCell>();
+        while (thisCell.nextCell == null && thisCell.previousCell == null) {
+            // Ant confusion animation
+            yield return new WaitForSeconds(3);
+        }
+        if (thisCell.nextCell != null) {
+            ChangeAntState(0);
+            FindNextTarget();
+        } else if (thisCell.previousCell != null) {
+            ChangeAntState(1);
+            FindPrevTarget();
         }
     }
 }
