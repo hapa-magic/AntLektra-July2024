@@ -47,7 +47,7 @@ public class HomeNest : MonoBehaviour
 
     // Update is called once per frame
 
-    public IEnumerator SpawnAnt(GameObject ant, int power, PlaySpot playSpot) {
+    public IEnumerator SpawnAnt(GameObject ant, int power) {
         for (int i = 0; i < power; ++i) {
             GameObject newAnt = Instantiate(ant, transform.position, Quaternion.identity, spawnParent.transform);
             if (!upsideDown)
@@ -62,7 +62,6 @@ public class HomeNest : MonoBehaviour
             antControl.antState = 2;
             yield return new WaitForSeconds(spawnWaitTime);
         }
-        playSpot.Discard();
     }
     
     public void StartNewTrail()
@@ -116,7 +115,7 @@ public class HomeNest : MonoBehaviour
         Debug.Log("Ending pheremone state");
         pheremoneState = 0;
     }
-    public void PlayInstant(Effect.EffectAbility effectAbility, PlaySpot playSpot)
+    public void PlayInstant(Effect.EffectAbility effectAbility)
     {
         switch (effectAbility)
         {
@@ -132,13 +131,14 @@ public class HomeNest : MonoBehaviour
                 gameManager.GetComponent<GameManager>().Draw();
                 break;
 
-            // case Effect.EffectAbility.Discard:
+            case Effect.EffectAbility.Discard:
+                gameManager.GetComponent<GameManager>().ChooseCardToDiscard();
+                break;
                 
 
                 //case Effect.EffectAbility.Cycle:
 
       
         }
-        //playSpot.Discard();
     }
 }

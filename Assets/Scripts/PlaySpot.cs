@@ -27,31 +27,29 @@ public class PlaySpot : MonoBehaviour
     public bool ActivateAbility(Effect effect, int power) 
     {
         if (homeNest != null) {
-            PlaySpot playSpot = this;
             switch (effect.effectType) {
                 case Effect.EffectType.Active:
                     Debug.Log("Should be spawning ants soon");
                     switch (effect.effectAbility)
                     {
                         case Effect.EffectAbility.SpawnBasicAnt:
-                            StartCoroutine(homeNest.SpawnAnt(homeNest._antPrefab, power, playSpot));
+                            StartCoroutine(homeNest.SpawnAnt(homeNest._antPrefab, power));
                             break;
 
                         case Effect.EffectAbility.SpawnMantisAnt:
-                            StartCoroutine(homeNest.SpawnAnt(homeNest._mantisAntPrefab, power, playSpot));
+                            StartCoroutine(homeNest.SpawnAnt(homeNest._mantisAntPrefab, power));
                             break;
 
                         case Effect.EffectAbility.SpawnBeetleAnt:
-                            StartCoroutine(homeNest.SpawnAnt(homeNest._beetleAntPrefab, power, playSpot));
+                            StartCoroutine(homeNest.SpawnAnt(homeNest._beetleAntPrefab, power));
                             break;
                     }
                     break;
 
                 case Effect.EffectType.Instant:
-                    homeNest.PlayInstant(effect.effectAbility, playSpot);
+                    homeNest.PlayInstant(effect.effectAbility);
                         break;
             }
-            
             return true;
         }
         return false;
@@ -70,7 +68,7 @@ public class PlaySpot : MonoBehaviour
         {
             ActivateAbility(card.effect[1], card.numAnts);
         }
-        homeNest.spawningCards.Add(thisObj);
+        Discard();
         return true;
     }
 

@@ -44,7 +44,7 @@ public class DrawPileManager : MonoBehaviour
         }
     }
 
-    public void DrawCard(HandManager handManager)
+    public bool DrawCard(HandManager handManager)
     {
         if (drawPile.Count == 0)
         {
@@ -57,8 +57,12 @@ public class DrawPileManager : MonoBehaviour
             handManager.AddCardToHand(nextCard);
             drawPile.RemoveAt(currentIndex);
             if (drawPile.Count > 0) currentIndex %= drawPile.Count; // Ensure currentIndex is always valid
+            UpdateDrawPileCount();
+            return true;
+        } else {
+            UpdateDrawPileCount();
+            return false;
         }
-        UpdateDrawPileCount();
     }
 
     private void RefillDeckFromDiscard()

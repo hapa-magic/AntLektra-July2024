@@ -8,6 +8,8 @@ namespace HapaMagic
     {
         public GameObject cardPrefab; // Assign in inspector
         public Transform handTransform; // Root of hand position
+        public GameObject discardPile;
+        private DiscardManager discardManager;
         public List<GameObject> cardsInHand = new List<GameObject>();
         public List<Transform> cardPositions;
         public int maxHandSize = 5;
@@ -49,5 +51,22 @@ namespace HapaMagic
             maxHandSize = setMaxHandSize;
         }
 
+        public bool Discard() {
+            if (cardsInHand.Count == 0) return false;
+            if (cardsInHand.Count == 1) {
+                discardManager.AddToDiscard(cardsInHand[0].GetComponent<Card>());
+                cardsInHand.Clear();
+                return true;
+            } else {
+                PromptForDiscard();
+                return true;
+            }
+        }
+        private void PromptForDiscard() {
+            foreach (GameObject card in cardsInHand) {
+                CardMovement cardMovement = card.GetComponent<CardMovement>();
+                cardMovement.PromptForDiscard();
+            }
+        }
     }
 }

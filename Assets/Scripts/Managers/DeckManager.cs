@@ -34,7 +34,7 @@ public class DeckManager : MonoBehaviour
         for (int i = 0; i < startingHandSize; i++)
         {
             Debug.Log($"Drawing Card");
-            DrawCard(handManager);
+            drawPileManager.DrawCard(handManager);
         }
     }
     private void Awake()
@@ -57,27 +57,11 @@ public class DeckManager : MonoBehaviour
         }
     }
 
-    public bool DrawCard(HandManager handManager)
-    {
-        if (allCards.Count == 0)
-            return false;
-
-        if (CanDraw())
-        {
-            Card nextCard = allCards[currentIndex];
-            handManager.AddCardToHand(nextCard);
-            currentIndex = (currentIndex + 1) % allCards.Count;
-            return true;
-        } else
-        {
-            return false;
-        }
+    public bool DrawCard() {
+        if (drawPileManager == null) return false;
+        return drawPileManager.DrawCard(handManager);
     }
 
-    public bool DrawCard()
-    {
-        return DrawCard(handManager);
-    }
     public bool CanDraw()
     {
         return currentHandSize < maxHandSize;

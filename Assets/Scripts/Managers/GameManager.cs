@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
     public AudioManager AudioManager { get; private set; }
     public DeckManager DeckManager { get; private set; }
     public HandManager handManager { get; private set; }
-
-    public bool PlayingCard = false;
+    public GameObject textPrompt;
+    private TMP_Text promptText;
 
     private void Awake()
     {
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        promptText = textPrompt.GetComponentInChildren<TMP_Text>();
         detectMouse = GetComponent<DetectMouseOnGameObj>();
         StartCoroutine(DecayEggCost());
         StartCoroutine(IncrementEggs());
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
         OptionsManager = GetComponentInChildren<OptionsManager>();
         AudioManager = GetComponentInChildren<AudioManager>();
         DeckManager = GetComponentInChildren<DeckManager>();
+        handManager = GameObject.Find("HandManager").GetComponent<HandManager>();
 
         if (OptionsManager == null)
         {
@@ -153,6 +155,7 @@ public class GameManager : MonoBehaviour
         {
             playerEggs -= eggCost;
             IncreaseEggCost();
+            UpdatePlayerEggs();
         } else
         {
             Debug.Log("Can't afford it!!");
@@ -175,5 +178,31 @@ public class GameManager : MonoBehaviour
     {
         return DeckManager.DrawCard();
     }
+    public void ButtonChooseDiscard() {
+        ChooseCardToDiscard();
+    }
+    public bool ChooseCardToDiscard() {
+        foreach (GameObject card in handManager.cardsInHand) {
+            card.GetComponent<CardMovement>().PromptForDiscard();
+        }
+        if (handManager.cardsInHand.Count == 0) {
+            return false;
+        } else {
+            StartCoroutine(ChooseDiscard());
+            return true;
+        }
+    }
 
+    private IEnumerator ChooseDiscard() {
+        if (handManager.cardsInHand.Count == 0) {
+            yield return null;
+        } else if (handManager.cardsInHand.Count == 1) {
+            handManager.Discard();
+            yield return null;
+        }
+        promptText.text = "Choose a card to discard";
+        promptText.enabled = true;
+        yield return new WaitForSeconds(5);
+    }
+    
 }

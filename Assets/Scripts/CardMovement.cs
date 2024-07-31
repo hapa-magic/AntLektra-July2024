@@ -18,6 +18,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     int UILayer;
     private GameObject playTarget;
     [SerializeField] public GameObject cardPreviewParent;
+    [SerializeField] public GameObject discardPreviewParent;
     private CardPreview cardPreview;
     private GameManager gameManager;
     
@@ -27,6 +28,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     [SerializeField] private Vector3 playPosition;
     [SerializeField] private GameObject glowEffect;
     [SerializeField] private GameObject playArrow;
+    [SerializeField] private DiscardPreview discardPreview;
     [SerializeField] private float lerpFactor = 0.1f;
     [SerializeField] private int cardPlayDivider = 4;
     [SerializeField] private float cardPlayMultiplier = 1f;
@@ -37,17 +39,17 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     [SerializeField] private float playPositionXMultiplier = 1f;
     [SerializeField] private bool needUpdatePlayPosition = false;
 
-    void Awake()
-    {
+    void Awake() {
         cardPreviewParent = GameObject.Find("CardPreview");
         cardPreview = cardPreviewParent.GetComponent<CardPreview>();
+        discardPreviewParent = GameObject.Find("DiscardPreview");
+        discardPreview = discardPreviewParent.GetComponent<DiscardPreview>();
         UILayer = LayerMask.NameToLayer("UI");
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         gameManager = FindAnyObjectByType<GameManager>();
 
-        if (canvas != null)
-        {
+        if (canvas != null) {
             canvasRectTranform = canvas.GetComponent<RectTransform>();
         }
 
@@ -59,23 +61,20 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         updatePlayPostion();
     }
 
-    void Update()
-    {
-        if (needUpdateCardPlayPosition)
-        {
+    void Update() {
+        if (needUpdateCardPlayPosition) {
             updateCardPlayPostion();
         }
 
-        if (needUpdatePlayPosition)
-        {
+        if (needUpdatePlayPosition) {
             updatePlayPostion();
         }
         
-        switch (currentState)
-        {
+        switch (currentState) {
             case 1:
                 HandleHoverState();
                 break;
+
             case 2:
                 HandleDragState();
                 if (IsPointerOverUIElement()) {
@@ -84,11 +83,11 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                             TransitionToState0();
                         }
                     }
-                } else if (!Input.GetMouseButton(0)) //Check if mouse button is released
-                {
+                } else if (!Input.GetMouseButton(0)) { //Check if mouse button is released
                     TransitionToState0();
                 }
                 break;
+
             /*case 3:
                 HandlePlayState();
                 if (!Input.GetMouseButton(0)) //Check if mouse button is released
@@ -96,14 +95,14 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                     TransitionToState0();
                 }
                 break;*/
-            case 5:
 
-                break;  
+            case 6:
+                HandleHoverState();
+                break;
         }
     }
 
-    private void TransitionToState0()
-    {
+    private void TransitionToState0() {
         cardPreview.DestroyPreview();
         currentState = 0;
         rectTransform.localScale = originalScale; //Reset Scale
@@ -113,10 +112,18 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         playArrow.SetActive(false); //Disable playArrow
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (currentState == 0)
-        {
+    private void TransitionToState6() {
+        currentState = 6;
+        
+    }
+
+    private void TransitionToState7() {
+        currentState = 7;
+        discardPreview.PreviewDiscard(this.transform);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        if (currentState == 0) {
             originalPosition = rectTransform.localPosition;
             originalRotation = rectTransform.localRotation;
             originalScale = rectTransform.localScale;
@@ -124,39 +131,42 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             cardPreview.PreviewCard(rectTransform.gameObject.GetComponent<CardDisplay>().cardData);
 
             currentState = 1;
-        } /* else if (currentState == 5) {
-            cardPreview.PreviewCard(rectTransform.gameObject);
-        }*/
+        } else if (currentState == 5) {
+            originalPosition = rectTransform.localPosition;
+            originalRotation = rectTransform.localRotation;
+            originalScale = rectTransform.localScale;
+
+            currentState = 6;
+        }
     }
-    public void OnPointerUp(PointerEventData eventData) {
+    /*public void OnPointerUp(PointerEventData eventData) {
         if (currentState == 2) {
-            Debug.Log("Anything");
             CheckForPlay();
         }
-    }
+    }*/
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (currentState == 1)
-        {
+    public void OnPointerExit(PointerEventData eventData) {
+        if (currentState == 1) {
             TransitionToState0();
-        } /* else if (currentState == 5) {
-           cardPreview.DestroyPreview();         
-        }*/
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (currentState == 1)
-        {
-            currentState = 2;
+        } else if (currentState == 6) {
+            rectTransform.localScale = originalScale; //Reset Scale
+            rectTransform.localRotation = originalRotation; //Reset Rotation
+            rectTransform.localPosition = originalPosition; //Reset Position
+            glowEffect.SetActive(false); //Disable glow effect   
+            currentState = 5;
         }
     }
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        if (currentState == 2)
-        {
+    public void OnPointerDown(PointerEventData eventData) {
+        if (currentState == 1) {
+            currentState = 2;
+        } else if (currentState == 6) {
+            TransitionToState7();
+        }
+    }
+
+    public void OnDrag(PointerEventData eventData) {
+        if (currentState == 2) {
             /*if (Input.mousePosition.y > cardPlay.y)
             {
                 currentState = 3;
@@ -222,7 +232,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             Debug.Log("Tryign to play a caaaaaard!");
             gameManager.playerEggs -= card.eggCost;
             gameManager.UpdatePlayerEggs();
-            currentState = 5;
+            // currentState = 5;
             cardPreview.DestroyPreview();
             newParent.GetComponent<PlaySpot>().ActivateAbility(card, this.gameObject);
             transform.SetParent(newParent);
@@ -251,7 +261,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         }*/
     }
 
-private void HandleHoverState()
+    private void HandleHoverState()
     {
         glowEffect.SetActive(true);
         rectTransform.localScale = originalScale * selectScale;
@@ -296,5 +306,12 @@ private void HandleHoverState()
             playPosition.x = canvasRectTranform.rect.width * segmentX;
             playPosition.y = canvasRectTranform.rect.height * segmentY;
         }
+    }
+    public void PromptForDiscard() {
+        Debug.Log(this + " is ready to be selected for discard");
+        this.currentState = 5;
+    }
+    public void DiscardPromptComplete() {
+        TransitionToState0();
     }
 }
